@@ -1,4 +1,4 @@
-package com.vnazarov.test2.fragments.cities
+package com.vnazarov.test2.fragments.places
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,27 +9,27 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.vnazarov.test2.MainActivity
-import com.vnazarov.test2.data.cities
-import com.vnazarov.test2.data.region
-import com.vnazarov.test2.databinding.FragmentCitiesListBinding
+import com.vnazarov.test2.data.city
+import com.vnazarov.test2.data.places
+import com.vnazarov.test2.databinding.FragmentPlacesListBinding
 import com.vnazarov.test2.helpers.disablePopBack
 import com.vnazarov.test2.helpers.enablePopBack
-import com.vnazarov.test2.objects.City
+import com.vnazarov.test2.objects.Place
 
-class CitiesListFragment : Fragment() {
+class PlacesListFragment: Fragment() {
 
-    private lateinit var mBinding: FragmentCitiesListBinding
+    private lateinit var mBinding: FragmentPlacesListBinding
     private lateinit var mRecyclerView: RecyclerView
-    private lateinit var adapter: CitiesListAdapter
+    private lateinit var adapter: PlacesListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        mBinding = FragmentCitiesListBinding.inflate(layoutInflater, container, false)
+        mBinding = FragmentPlacesListBinding.inflate(layoutInflater, container, false)
 
-        loadCities()
+        loadPlaces()
 
         return mBinding.root
     }
@@ -37,7 +37,7 @@ class CitiesListFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        (activity as MainActivity).title = region
+        (activity as MainActivity).title = city
         enablePopBack(activity as MainActivity, (activity as MainActivity).mToolbar)
     }
 
@@ -47,24 +47,24 @@ class CitiesListFragment : Fragment() {
         disablePopBack(activity as MainActivity)
     }
 
-    private fun loadCities() {
-        if (cities.isEmpty()) {
-            val citiesList = arrayListOf<City>()
-            for (i in 1..10) {
-                val city = City("City test$i")
-                citiesList.add(city)
+    private fun loadPlaces(){
+        if (places.isEmpty()){
+            val placesList = arrayListOf<Place>()
+            for (i in 1..10){
+                val place = Place(name = "Place test$i")
+                placesList.add(place)
             }
 
-            cities = citiesList
+            places = placesList
 
             loadRV()
         } else loadRV()
     }
 
-    private fun loadRV() {
-        mRecyclerView = mBinding.listOfCities
+    private fun loadRV(){
+        mRecyclerView = mBinding.listOfPlaces
         mRecyclerView.layoutManager = LinearLayoutManager(activity)
-        adapter = CitiesListAdapter(cities, activity as AppCompatActivity)
-        mBinding.listOfCities.adapter = adapter
+        adapter = PlacesListAdapter(places, activity as AppCompatActivity)
+        mBinding.listOfPlaces.adapter = adapter
     }
 }

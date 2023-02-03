@@ -4,8 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
+    android:id="@+id/city_full_item"
     android:layout_width="match_parent"
-    android:layout_height="80dp">
+    android:layout_height="80dp"
+
+    android:background="@drawable/button_ripple_effect"
+    android:clickable="true"
+    android:focusable="true">
 
     <TextView
         android:id="@+id/city_item_name"

@@ -1,4 +1,4 @@
-package com.vnazarov.test2.fragments.region
+package com.vnazarov.test2.fragments.regions
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,7 +10,7 @@ import com.vnazarov.test2.fragments.cities.CitiesListFragment
 import com.vnazarov.test2.helpers.replaceFragment
 import com.vnazarov.test2.objects.Region
 
-class RegionListAdapter(var regionList: List<Region>, private val activity: AppCompatActivity): RecyclerView.Adapter<RegionListAdapter.RegionListHolder>() {
+class RegionsListAdapter(var regionList: List<Region>, private val activity: AppCompatActivity): RecyclerView.Adapter<RegionsListAdapter.RegionListHolder>() {
 
     inner class RegionListHolder(val binding: RegionItemBinding): RecyclerView.ViewHolder(binding.root)
 
@@ -24,10 +24,10 @@ class RegionListAdapter(var regionList: List<Region>, private val activity: AppC
         with(holder){
             with(regionList[position]){
                 binding.regionItemName.text = this.name
-                binding.regionItemName.isClickable = true
-                binding.regionItemName.setOnClickListener {
-                    activity.replaceFragment(CitiesListFragment())
+                binding.regionFullItem.isClickable = true
+                binding.regionFullItem.setOnClickListener {
                     region = this.name
+                    activity.replaceFragment(CitiesListFragment())
                 }
             }
         }

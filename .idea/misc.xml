@@ -3,11 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android/Projects/Test2/app/src/main/res/drawable/button_ripple_effect.xml" value="0.114" />
         <entry key="..\:/Android/Projects/Test2/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
         <entry key="..\:/Android/Projects/Test2/app/src/main/res/layout/city_item.xml" value="0.22826086956521738" />
         <entry key="..\:/Android/Projects/Test2/app/src/main/res/layout/fragment_cities_list.xml" value="0.22826086956521738" />
         <entry key="..\:/Android/Projects/Test2/app/src/main/res/layout/fragment_locations_list.xml" value="0.22826086956521738" />
+        <entry key="..\:/Android/Projects/Test2/app/src/main/res/layout/fragment_place.xml" value="0.22826086956521738" />
+        <entry key="..\:/Android/Projects/Test2/app/src/main/res/layout/fragment_place_list.xml" value="0.22826086956521738" />
         <entry key="..\:/Android/Projects/Test2/app/src/main/res/layout/fragment_regions_list.xml" value="0.12360688956433637" />
+        <entry key="..\:/Android/Projects/Test2/app/src/main/res/layout/place_item.xml" value="0.22826086956521738" />
         <entry key="..\:/Android/Projects/Test2/app/src/main/res/layout/region_item.xml" value="0.22826086956521738" />
       </map>
     </option>

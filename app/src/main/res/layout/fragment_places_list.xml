@@ -6,10 +6,10 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.regions.RegionsListFragment">
+    tools:context=".fragments.places.PlacesListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_of_regions"
+        android:id="@+id/list_of_places"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 

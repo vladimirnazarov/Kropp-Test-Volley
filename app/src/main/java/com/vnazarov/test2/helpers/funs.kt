@@ -1,7 +1,9 @@
 package com.vnazarov.test2.helpers
 
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import com.vnazarov.test2.MainActivity
 import com.vnazarov.test2.R
 
 fun AppCompatActivity.replaceFragment(fragment: Fragment, addStack: Boolean = true) {
@@ -17,4 +19,15 @@ fun AppCompatActivity.replaceFragment(fragment: Fragment, addStack: Boolean = tr
             .replace(R.id.data_container, fragment)
             .commit()
     }
+}
+
+fun enablePopBack(activity: MainActivity, toolbar: Toolbar){
+    activity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    toolbar.setNavigationOnClickListener{
+        activity.supportFragmentManager.popBackStack()
+    }
+}
+
+fun disablePopBack(activity: MainActivity){
+    activity.supportActionBar?.setDisplayHomeAsUpEnabled(false)
 }
