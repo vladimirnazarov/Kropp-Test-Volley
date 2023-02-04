@@ -1,3 +1,3 @@
 package com.vnazarov.test2.objects
 
-data class Place(val name: String) {}
+data class Place(val name: String, var imageId: Int) {}

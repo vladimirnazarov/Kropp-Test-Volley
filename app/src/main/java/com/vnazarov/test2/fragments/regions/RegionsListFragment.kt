@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.vnazarov.test2.MainActivity
+import com.vnazarov.test2.R
 import com.vnazarov.test2.data.regions
 import com.vnazarov.test2.databinding.FragmentRegionsListBinding
 import com.vnazarov.test2.objects.Region
@@ -41,7 +42,7 @@ class RegionsListFragment: Fragment() {
         if (regions.isEmpty()) {
             val regionList = arrayListOf<Region>()
             for (i in 1..10) {
-                val region = Region(name = "Region test$i")
+                val region = Region(name = "Region test$i", R.drawable.demo_region)
                 regionList.add(region)
             }
 

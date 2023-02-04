@@ -11,3 +11,5 @@ var place = ""
 var regions = arrayListOf<Region>()
 var cities = arrayListOf<City>()
 var places = arrayListOf<Place>()
+
+var placeImage = 0

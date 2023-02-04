@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.vnazarov.test2.MainActivity
+import com.vnazarov.test2.R
 import com.vnazarov.test2.data.cities
 import com.vnazarov.test2.data.region
 import com.vnazarov.test2.databinding.FragmentCitiesListBinding
@@ -51,7 +52,7 @@ class CitiesListFragment : Fragment() {
         if (cities.isEmpty()) {
             val citiesList = arrayListOf<City>()
             for (i in 1..10) {
-                val city = City("City test$i")
+                val city = City("City test$i", R.drawable.demo_city)
                 citiesList.add(city)
             }
 

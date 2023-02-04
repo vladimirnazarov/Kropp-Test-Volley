@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import com.vnazarov.test2.R
 import com.vnazarov.test2.data.region
 import com.vnazarov.test2.databinding.RegionItemBinding
 import com.vnazarov.test2.fragments.cities.CitiesListFragment
@@ -24,6 +26,8 @@ class RegionsListAdapter(var regionList: List<Region>, private val activity: App
         with(holder){
             with(regionList[position]){
                 binding.regionItemName.text = this.name
+                binding.regionImage.load(this.imageId)
+
                 binding.regionFullItem.isClickable = true
                 binding.regionFullItem.setOnClickListener {
                     region = this.name

@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.vnazarov.test2.MainActivity
+import com.vnazarov.test2.R
 import com.vnazarov.test2.data.city
 import com.vnazarov.test2.data.places
 import com.vnazarov.test2.databinding.FragmentPlacesListBinding
@@ -51,7 +52,7 @@ class PlacesListFragment: Fragment() {
         if (places.isEmpty()){
             val placesList = arrayListOf<Place>()
             for (i in 1..10){
-                val place = Place(name = "Place test$i")
+                val place = Place(name = "Place test$i", R.drawable.demo_place)
                 placesList.add(place)
             }
 

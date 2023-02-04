@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import coil.load
 import com.vnazarov.test2.MainActivity
 import com.vnazarov.test2.data.city
 import com.vnazarov.test2.data.place
+import com.vnazarov.test2.data.placeImage
 import com.vnazarov.test2.data.region
 import com.vnazarov.test2.databinding.FragmentCurrentPlaceBinding
 import com.vnazarov.test2.helpers.disablePopBack
@@ -31,6 +33,7 @@ class CurrentPlaceFragment: Fragment() {
         super.onResume()
 
         mBinding.currentPlaceTest.text = place
+        mBinding.currentPlaceImage.load(placeImage)
         (activity as MainActivity).title = place
         enablePopBack(activity as MainActivity, (activity as MainActivity).mToolbar)
     }

@@ -4,7 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import coil.transform.CircleCropTransformation
 import com.vnazarov.test2.data.place
+import com.vnazarov.test2.data.placeImage
 import com.vnazarov.test2.databinding.PlaceItemBinding
 import com.vnazarov.test2.fragments.currentPlace.CurrentPlaceFragment
 import com.vnazarov.test2.helpers.replaceFragment
@@ -24,9 +27,15 @@ class PlacesListAdapter(var placesList: List<Place>, private val activity: AppCo
         with(holder){
             with(placesList[position]){
                 binding.placeItemName.text = this.name
+                binding.placeImage.load(this.imageId){
+                    crossfade(true)
+                    transformations(CircleCropTransformation())
+                }
+
                 binding.placeFullItem.isClickable = true
                 binding.placeFullItem.setOnClickListener {
                     place = this.name
+                    placeImage = this.imageId
                     activity.replaceFragment(CurrentPlaceFragment())
                 }
             }
