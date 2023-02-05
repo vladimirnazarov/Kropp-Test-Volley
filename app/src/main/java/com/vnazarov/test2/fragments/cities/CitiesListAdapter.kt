@@ -25,15 +25,10 @@ class CitiesListAdapter(var citiesList: List<City>, val activity: AppCompatActiv
     override fun onBindViewHolder(holder: CitiesListHolder, position: Int) {
         with(holder){
             with(citiesList[position]){
-                binding.cityItemName.text = this.name
-                binding.cityImage.load(this.imageId){
-                    crossfade(true)
-                    transformations(CircleCropTransformation())
-                }
 
                 binding.cityFullItem.isClickable = true
                 binding.cityFullItem.setOnClickListener {
-                    city = this.name
+
                     activity.replaceFragment(PlacesListFragment())
                 }
             }
@@ -43,6 +38,4 @@ class CitiesListAdapter(var citiesList: List<City>, val activity: AppCompatActiv
     override fun getItemCount(): Int {
         return citiesList.size
     }
-
-
 }
