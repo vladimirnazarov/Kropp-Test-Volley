@@ -26,9 +26,16 @@ class CitiesListAdapter(var citiesList: List<City>, val activity: AppCompatActiv
         with(holder){
             with(citiesList[position]){
 
+                binding.cityImage.load(this.cityEmblem){
+                    crossfade(true)
+                    transformations(CircleCropTransformation())
+                }
+                binding.cityItemName.text = this.cityName
+
                 binding.cityFullItem.isClickable = true
                 binding.cityFullItem.setOnClickListener {
 
+                    city = this.cityName
                     activity.replaceFragment(PlacesListFragment())
                 }
             }

@@ -2,21 +2,21 @@ package com.vnazarov.test2.objects
 
 data class City(
 
-    var locationId: Int,
+    val locationId: Int,
 
-    var id: Int,
+    val id: Int,
 
-    var cityName: String,
+    val cityName: String,
 
-    var lang: Int,
+    val language: Int,
 
-    var cityEmblem: String,
+    val cityEmblem: String,
 
-    var lastEditTime: Long,
+    val lastEditTime: Long,
 
-    var isCityVisible: Boolean,
+    val isCityVisible: Boolean,
 
-    var isCityRegional: Boolean,
+    val isCityRegional: Boolean,
 
-    var cityRegion: String
+    val cityRegion: String
 )

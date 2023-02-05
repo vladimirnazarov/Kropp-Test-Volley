@@ -27,15 +27,16 @@ class PlacesListAdapter(var placesList: List<Place>, private val activity: AppCo
         with(holder){
             with(placesList[position]){
                 binding.placeItemName.text = this.name
-                binding.placeImage.load(this.imageId){
+                binding.placeImage.load(this.photo){
                     crossfade(true)
+                    size(50, 50)
                     transformations(CircleCropTransformation())
                 }
 
                 binding.placeFullItem.isClickable = true
                 binding.placeFullItem.setOnClickListener {
                     place = this.name
-                    placeImage = this.imageId
+                    placeImage = this.photo
                     activity.replaceFragment(CurrentPlaceFragment())
                 }
             }

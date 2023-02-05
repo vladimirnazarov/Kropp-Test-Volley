@@ -9,7 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Request
+import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
 import com.vnazarov.test2.MainActivity
@@ -77,16 +79,15 @@ class CitiesListFragment : Fragment() {
                 }
 
                 cities = citiesList
-                println(citiesList)
 
                 loadRV()
 
             }, {
-                Log.e("Response error", it.message.toString())
+                Log.e("Cities response error", it.message.toString())
             })
 
-            val requestQueue = Volley.newRequestQueue(context)
-            requestQueue.add(request)
+            request.retryPolicy = object : DefaultRetryPolicy(100000, 1, 1f){}
+            (activity as MainActivity).requestQueue.add(request)
 
         } else loadRV()
     }
