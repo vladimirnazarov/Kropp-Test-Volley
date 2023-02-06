@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -56,38 +57,7 @@ class CitiesListFragment : Fragment() {
     private fun loadCities() {
         if (cities.isEmpty()) {
 
-            val citiesList = arrayListOf<City>()
-
-            val url = "https://krokapp.by/api/get_cities/11/"
-            val request = JsonArrayRequest(Request.Method.GET, url, null, { response ->
-                for (i in 0 until response.length()) {
-                    val jsonObject = response.getJSONObject(i)
-
-                    val city = City(
-                        jsonObject.getInt("id_locale"),
-                        jsonObject.getInt("id"),
-                        jsonObject.getString("name"),
-                        jsonObject.getInt("lang"),
-                        jsonObject.getString("logo"),
-                        jsonObject.getLong("last_edit_time"),
-                        jsonObject.getBoolean("visible"),
-                        jsonObject.getBoolean("city_is_regional"),
-                        jsonObject.getString("region")
-                    )
-
-                    citiesList.add(city)
-                }
-
-                cities = citiesList
-
-                loadRV()
-
-            }, {
-                Log.e("Cities response error", it.message.toString())
-            })
-
-            request.retryPolicy = object : DefaultRetryPolicy(100000, 1, 1f){}
-            (activity as MainActivity).requestQueue.add(request)
+            Toast.makeText(context, "Something went wrong, try to relaunch the app", Toast.LENGTH_SHORT).show()
 
         } else loadRV()
     }

@@ -31,9 +31,9 @@
 
         android:textColor="@color/black"
         android:text="Test"
-        android:textSize="32sp"
+        android:textSize="18sp"
 
-        android:layout_marginStart="64dp"
+        android:layout_marginStart="32dp"
 
         app:layout_constraintStart_toEndOf="@id/city_image"
         app:layout_constraintTop_toTopOf="parent"

@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +16,7 @@ import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
 import com.vnazarov.test2.MainActivity
 import com.vnazarov.test2.R
+import com.vnazarov.test2.data.cities
 import com.vnazarov.test2.data.city
 import com.vnazarov.test2.data.places
 import com.vnazarov.test2.databinding.FragmentPlacesListBinding
@@ -23,7 +25,7 @@ import com.vnazarov.test2.helpers.disablePopBack
 import com.vnazarov.test2.helpers.enablePopBack
 import com.vnazarov.test2.objects.Place
 
-class PlacesListFragment: Fragment() {
+class PlacesListFragment : Fragment() {
 
     private lateinit var mBinding: FragmentPlacesListBinding
     private lateinit var mRecyclerView: RecyclerView
@@ -54,68 +56,16 @@ class PlacesListFragment: Fragment() {
         disablePopBack(activity as MainActivity)
     }
 
-    private fun loadPlaces(){
-        if (places.isEmpty()){
-            val placesList = arrayListOf<Place>()
+    private fun loadPlaces() {
+        if (places.isEmpty()) {
 
-            val url = "http://krokapp.by/api/get_points/11/"
-            val request = JsonArrayRequest(Request.Method.GET, url, null, { response ->
-
-                for (i in 0 until response.length()){
-                    val jsonObject = response.getJSONObject(i)
-
-                    val jsonListString = jsonObject.getJSONArray("images")
-                    val jsonListInt = jsonObject.getJSONArray("tags")
-
-                    val listString = arrayListOf<String>()
-                    val listInt = arrayListOf<Int>()
-
-                    for (j in 0 until jsonListString.length()){
-                        listString.add(jsonListString[j] as String)
-                    }
-
-                    for (j in 0 until jsonListInt.length()){
-                        listInt.add(jsonListInt[j] as Int)
-                    }
-
-                    val place = Place(
-                        jsonObject.getInt("id"),
-                        jsonObject.getInt("id_point"),
-                        jsonObject.getString("name"),
-                        jsonObject.getString("text"),
-                        jsonObject.getString("sound"),
-                        jsonObject.getInt("lang"),
-                        jsonObject.getLong("last_edit_time"),
-                        jsonObject.getString("creation_date"),
-                        jsonObject.getDouble("lat"),
-                        jsonObject.getDouble("lng"),
-                        jsonObject.getString("photo"),
-                        jsonObject.getInt("city_id"),
-                        jsonObject.getBoolean("visible"),
-                        listString,
-                        listInt,
-                        jsonObject.getBoolean("is_excursion")
-                    )
-
-                    placesList.add(place)
-                }
-
-                places = placesList
-
-                loadRV()
-
-            }, {
-                Log.e("Places response error", it.message.toString())
-            })
-
-            request.retryPolicy = object : DefaultRetryPolicy(100000, 1, 1f){}
-            (activity as MainActivity).requestQueue.cache.clear()
-            (activity as MainActivity).requestQueue.add(request)
+            Toast.makeText(context, "Something went wrong, try to relaunch the app", Toast.LENGTH_SHORT).show()
 
         } else loadRV()
+
     }
 
-    private fun loadRV(){
+    private fun loadRV() {
         mRecyclerView = mBinding.listOfPlaces
         mRecyclerView.layoutManager = LinearLayoutManager(activity)
         adapter = PlacesListAdapter(places, activity as AppCompatActivity)
