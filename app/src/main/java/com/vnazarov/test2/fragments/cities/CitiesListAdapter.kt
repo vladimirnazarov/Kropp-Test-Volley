@@ -25,8 +25,7 @@ class CitiesListAdapter(var citiesList: List<City>, val activity: AppCompatActiv
         with(holder){
             with(citiesList[position]){
 
-                Picasso.get().load(this.cityEmblem)
-                    .into(binding.cityImage)
+                Picasso.get().load(this.cityEmblem).into(binding.cityImage)
 
                 binding.cityItemName.text = this.cityName
 

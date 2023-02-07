@@ -1,12 +1,16 @@
 package com.vnazarov.test2
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.android.volley.RequestQueue
-import com.android.volley.toolbox.*
+import com.android.volley.toolbox.Volley
+import com.vnazarov.test2.data.currentPlace
 import com.vnazarov.test2.databinding.ActivityMainBinding
+import com.vnazarov.test2.fragments.currentPlace.CurrentPlaceFragment
 import com.vnazarov.test2.helpers.loadData
+import com.vnazarov.test2.helpers.replaceFragment
+import com.vnazarov.test2.objects.Place
 
 class MainActivity : AppCompatActivity() {
 
