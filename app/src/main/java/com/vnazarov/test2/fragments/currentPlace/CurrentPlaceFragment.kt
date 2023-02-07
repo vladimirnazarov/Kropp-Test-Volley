@@ -52,7 +52,7 @@ class CurrentPlaceFragment : Fragment() {
 
         initializeAudioPlayer()
 
-        mBinding.currentPlaceText.text = htmlTextDecoded
+        mBinding.currentPlaceText.text = "$htmlTextDecoded${currentPlace.creationDate}"
         (activity as MainActivity).title = currentCity.cityName
         enablePopBack(activity as MainActivity, (activity as MainActivity).mToolbar)
     }
