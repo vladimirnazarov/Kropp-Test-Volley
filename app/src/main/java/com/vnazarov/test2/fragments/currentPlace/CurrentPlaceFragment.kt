@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import coil.load
 import com.vnazarov.test2.MainActivity
-import com.vnazarov.test2.data.place
-import com.vnazarov.test2.data.placeImage
+import com.vnazarov.test2.data.currentPlace
+import com.vnazarov.test2.data.currentPlaceImage
 import com.vnazarov.test2.databinding.FragmentCurrentPlaceBinding
 import com.vnazarov.test2.helpers.disablePopBack
 import com.vnazarov.test2.helpers.enablePopBack
@@ -30,9 +30,9 @@ class CurrentPlaceFragment: Fragment() {
     override fun onResume() {
         super.onResume()
 
-        mBinding.currentPlaceTest.text = place
-        mBinding.currentPlaceImage.load(placeImage)
-        (activity as MainActivity).title = place
+        mBinding.currentPlaceTest.text = currentPlace
+        mBinding.currentPlaceImage.load(currentPlaceImage)
+        (activity as MainActivity).title = currentPlace
         enablePopBack(activity as MainActivity, (activity as MainActivity).mToolbar)
     }
 

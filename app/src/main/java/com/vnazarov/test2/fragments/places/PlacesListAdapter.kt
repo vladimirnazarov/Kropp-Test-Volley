@@ -6,8 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
-import com.vnazarov.test2.data.place
-import com.vnazarov.test2.data.placeImage
+import com.vnazarov.test2.data.currentPlace
+import com.vnazarov.test2.data.currentPlaceImage
 import com.vnazarov.test2.databinding.PlaceItemBinding
 import com.vnazarov.test2.fragments.currentPlace.CurrentPlaceFragment
 import com.vnazarov.test2.helpers.replaceFragment
@@ -35,8 +35,8 @@ class PlacesListAdapter(var placesList: List<Place>, private val activity: AppCo
 
                 binding.placeFullItem.isClickable = true
                 binding.placeFullItem.setOnClickListener {
-                    place = this.name
-                    placeImage = this.photo
+                    currentPlace = this.name
+                    currentPlaceImage = this.photo
                     activity.replaceFragment(CurrentPlaceFragment())
                 }
             }

@@ -1,7 +1,6 @@
 package com.vnazarov.test2.fragments.cities
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,14 +9,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.android.volley.DefaultRetryPolicy
-import com.android.volley.Request
-import com.android.volley.RequestQueue
-import com.android.volley.toolbox.JsonArrayRequest
-import com.android.volley.toolbox.Volley
 import com.vnazarov.test2.MainActivity
-import com.vnazarov.test2.data.cities
-import com.vnazarov.test2.data.region
+import com.vnazarov.test2.data.currentRegion
+import com.vnazarov.test2.data.dataCities
+import com.vnazarov.test2.data.currentRegionName
 import com.vnazarov.test2.databinding.FragmentCitiesListBinding
 import com.vnazarov.test2.helpers.disablePopBack
 import com.vnazarov.test2.helpers.enablePopBack
@@ -44,7 +39,7 @@ class CitiesListFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        (activity as MainActivity).title = region
+        (activity as MainActivity).title = currentRegionName
         enablePopBack(activity as MainActivity, (activity as MainActivity).mToolbar)
     }
 
@@ -55,17 +50,27 @@ class CitiesListFragment : Fragment() {
     }
 
     private fun loadCities() {
-        if (cities.isEmpty()) {
+        if (dataCities.isEmpty()) {
 
             Toast.makeText(context, "Something went wrong, try to relaunch the app", Toast.LENGTH_SHORT).show()
 
-        } else loadRV()
+        } else {
+
+            val dataCitiesPerPlaceV1 = arrayListOf<City>()
+
+            for (i in 0 until dataCities.size){
+                if (dataCities[i].cityRegion == currentRegion) dataCitiesPerPlaceV1.add(dataCities[i])
+                if (!dataCities[i].isCityVisible) dataCitiesPerPlaceV1.remove(dataCities[i])
+            }
+
+            loadRV(dataCitiesPerPlaceV1)
+        }
     }
 
-    private fun loadRV() {
+    private fun loadRV(citiesPerPlace: List<City>) {
         mRecyclerView = mBinding.listOfCities
         mRecyclerView.layoutManager = LinearLayoutManager(activity)
-        adapter = CitiesListAdapter(cities, activity as AppCompatActivity)
+        adapter = CitiesListAdapter(citiesPerPlace, activity as AppCompatActivity)
         mBinding.listOfCities.adapter = adapter
     }
 }

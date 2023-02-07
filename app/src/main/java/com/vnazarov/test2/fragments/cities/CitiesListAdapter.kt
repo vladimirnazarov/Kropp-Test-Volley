@@ -5,8 +5,10 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import coil.size.Precision
+import coil.size.Scale
 import coil.transform.CircleCropTransformation
-import com.vnazarov.test2.data.city
+import com.vnazarov.test2.data.currentCity
 import com.vnazarov.test2.databinding.CityItemBinding
 import com.vnazarov.test2.fragments.places.PlacesListFragment
 import com.vnazarov.test2.helpers.replaceFragment
@@ -28,6 +30,7 @@ class CitiesListAdapter(var citiesList: List<City>, val activity: AppCompatActiv
 
                 binding.cityImage.load(this.cityEmblem){
                     crossfade(true)
+                    Precision.INEXACT
                     transformations(CircleCropTransformation())
                 }
                 binding.cityItemName.text = this.cityName
@@ -35,7 +38,7 @@ class CitiesListAdapter(var citiesList: List<City>, val activity: AppCompatActiv
                 binding.cityFullItem.isClickable = true
                 binding.cityFullItem.setOnClickListener {
 
-                    city = this.cityName
+                    currentCity = this.cityName
                     activity.replaceFragment(PlacesListFragment())
                 }
             }

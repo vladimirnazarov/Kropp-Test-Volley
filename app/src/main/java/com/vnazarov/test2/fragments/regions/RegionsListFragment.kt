@@ -10,11 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.vnazarov.test2.MainActivity
-import com.vnazarov.test2.R
-import com.vnazarov.test2.data.language
-import com.vnazarov.test2.data.regions
+import com.vnazarov.test2.data.dataRegions
 import com.vnazarov.test2.databinding.FragmentRegionsListBinding
-import com.vnazarov.test2.objects.Region
 
 class RegionsListFragment: Fragment() {
 
@@ -41,7 +38,7 @@ class RegionsListFragment: Fragment() {
     }
 
     private fun loadRegions(){
-        if (regions.isEmpty()) {
+        if (dataRegions.isEmpty()) {
 
             Toast.makeText(context, "Something went wrong, try to relaunch the app", Toast.LENGTH_SHORT).show()
 
@@ -51,7 +48,7 @@ class RegionsListFragment: Fragment() {
     private fun loadRV(){
         mRecyclerView = mBinding.listOfRegions
         mRecyclerView.layoutManager = LinearLayoutManager(activity)
-        adapter = RegionsListAdapter(regions, activity as AppCompatActivity)
+        adapter = RegionsListAdapter(dataRegions, activity as AppCompatActivity)
         mBinding.listOfRegions.adapter = adapter
     }
 }

@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.vnazarov.test2.R
-import com.vnazarov.test2.data.region
+import com.vnazarov.test2.data.currentRegion
+import com.vnazarov.test2.data.currentRegionName
 import com.vnazarov.test2.databinding.RegionItemBinding
 import com.vnazarov.test2.fragments.cities.CitiesListFragment
 import com.vnazarov.test2.helpers.replaceFragment
@@ -30,7 +30,8 @@ class RegionsListAdapter(var regionList: List<Region>, private val activity: App
 
                 binding.regionFullItem.isClickable = true
                 binding.regionFullItem.setOnClickListener {
-                    region = this.name
+                    currentRegion = this.region
+                    currentRegionName = this.name
                     activity.replaceFragment(CitiesListFragment())
                 }
             }

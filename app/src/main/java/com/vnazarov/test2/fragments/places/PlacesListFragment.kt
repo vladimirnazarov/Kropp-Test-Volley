@@ -1,7 +1,6 @@
 package com.vnazarov.test2.fragments.places
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,20 +9,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.android.volley.DefaultRetryPolicy
-import com.android.volley.Request
-import com.android.volley.toolbox.JsonArrayRequest
-import com.android.volley.toolbox.Volley
 import com.vnazarov.test2.MainActivity
-import com.vnazarov.test2.R
-import com.vnazarov.test2.data.cities
-import com.vnazarov.test2.data.city
-import com.vnazarov.test2.data.places
+import com.vnazarov.test2.data.currentCity
+import com.vnazarov.test2.data.dataPlaces
 import com.vnazarov.test2.databinding.FragmentPlacesListBinding
-import com.vnazarov.test2.fragments.cities.CitiesListFragment
 import com.vnazarov.test2.helpers.disablePopBack
 import com.vnazarov.test2.helpers.enablePopBack
-import com.vnazarov.test2.objects.Place
 
 class PlacesListFragment : Fragment() {
 
@@ -46,7 +37,7 @@ class PlacesListFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        (activity as MainActivity).title = city
+        (activity as MainActivity).title = currentCity
         enablePopBack(activity as MainActivity, (activity as MainActivity).mToolbar)
     }
 
@@ -57,7 +48,7 @@ class PlacesListFragment : Fragment() {
     }
 
     private fun loadPlaces() {
-        if (places.isEmpty()) {
+        if (dataPlaces.isEmpty()) {
 
             Toast.makeText(context, "Something went wrong, try to relaunch the app", Toast.LENGTH_SHORT).show()
 
@@ -68,7 +59,7 @@ class PlacesListFragment : Fragment() {
     private fun loadRV() {
         mRecyclerView = mBinding.listOfPlaces
         mRecyclerView.layoutManager = LinearLayoutManager(activity)
-        adapter = PlacesListAdapter(places, activity as AppCompatActivity)
+        adapter = PlacesListAdapter(dataPlaces, activity as AppCompatActivity)
         mBinding.listOfPlaces.adapter = adapter
     }
 }

@@ -5,14 +5,15 @@ import com.vnazarov.test2.objects.Language
 import com.vnazarov.test2.objects.Place
 import com.vnazarov.test2.objects.Region
 
-var region = ""
-var city = ""
-var place = ""
-var language = 0
+var currentRegionName = ""
+var currentRegion = ""
+var currentCity = ""
+var currentPlace = ""
+var currentLanguage = 0
 
-var regions = arrayListOf<Region>()
-var cities = arrayListOf<City>()
-var places = arrayListOf<Place>()
-var languages = arrayListOf<Language>()
+var dataRegions = arrayListOf<Region>()
+var dataCities = arrayListOf<City>()
+var dataPlaces = arrayListOf<Place>()
+var dataLanguages = arrayListOf<Language>()
 
-var placeImage = ""
+var currentPlaceImage = ""
