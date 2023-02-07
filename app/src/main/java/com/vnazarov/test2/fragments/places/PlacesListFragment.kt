@@ -15,6 +15,7 @@ import com.vnazarov.test2.data.dataPlaces
 import com.vnazarov.test2.databinding.FragmentPlacesListBinding
 import com.vnazarov.test2.helpers.disablePopBack
 import com.vnazarov.test2.helpers.enablePopBack
+import com.vnazarov.test2.objects.Place
 
 class PlacesListFragment : Fragment() {
 
@@ -37,7 +38,7 @@ class PlacesListFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        (activity as MainActivity).title = currentCity
+        (activity as MainActivity).title = currentCity.cityName
         enablePopBack(activity as MainActivity, (activity as MainActivity).mToolbar)
     }
 
@@ -52,14 +53,24 @@ class PlacesListFragment : Fragment() {
 
             Toast.makeText(context, "Something went wrong, try to relaunch the app", Toast.LENGTH_SHORT).show()
 
-        } else loadRV()
+        } else {
+
+            val dataPlacePerCity = arrayListOf<Place>()
+
+            for (i in 0 until dataPlaces.size){
+                if (dataPlaces[i].cityId == currentCity.id) dataPlacePerCity.add(dataPlaces[i])
+                if (!dataPlaces[i].isVisible) dataPlacePerCity.remove(dataPlaces[i])
+            }
+
+            loadRV(dataPlacePerCity)
+        }
 
     }
 
-    private fun loadRV() {
+    private fun loadRV(placesPerCity: List<Place>) {
         mRecyclerView = mBinding.listOfPlaces
         mRecyclerView.layoutManager = LinearLayoutManager(activity)
-        adapter = PlacesListAdapter(dataPlaces, activity as AppCompatActivity)
+        adapter = PlacesListAdapter(placesPerCity, activity as AppCompatActivity)
         mBinding.listOfPlaces.adapter = adapter
     }
 }

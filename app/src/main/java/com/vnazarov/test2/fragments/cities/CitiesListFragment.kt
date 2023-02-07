@@ -56,21 +56,21 @@ class CitiesListFragment : Fragment() {
 
         } else {
 
-            val dataCitiesPerPlaceV1 = arrayListOf<City>()
+            val dataCityPerRegion = arrayListOf<City>()
 
             for (i in 0 until dataCities.size){
-                if (dataCities[i].cityRegion == currentRegion) dataCitiesPerPlaceV1.add(dataCities[i])
-                if (!dataCities[i].isCityVisible) dataCitiesPerPlaceV1.remove(dataCities[i])
+                if (dataCities[i].cityRegion == currentRegion) dataCityPerRegion.add(dataCities[i])
+                if (!dataCities[i].isCityVisible) dataCityPerRegion.remove(dataCities[i])
             }
 
-            loadRV(dataCitiesPerPlaceV1)
+            loadRV(dataCityPerRegion)
         }
     }
 
-    private fun loadRV(citiesPerPlace: List<City>) {
+    private fun loadRV(citiesPerRegion: List<City>) {
         mRecyclerView = mBinding.listOfCities
         mRecyclerView.layoutManager = LinearLayoutManager(activity)
-        adapter = CitiesListAdapter(citiesPerPlace, activity as AppCompatActivity)
+        adapter = CitiesListAdapter(citiesPerRegion, activity as AppCompatActivity)
         mBinding.listOfCities.adapter = adapter
     }
 }

@@ -4,10 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
-import coil.size.Precision
-import coil.size.Scale
-import coil.transform.CircleCropTransformation
+import com.squareup.picasso.Picasso
 import com.vnazarov.test2.data.currentCity
 import com.vnazarov.test2.databinding.CityItemBinding
 import com.vnazarov.test2.fragments.places.PlacesListFragment
@@ -28,17 +25,15 @@ class CitiesListAdapter(var citiesList: List<City>, val activity: AppCompatActiv
         with(holder){
             with(citiesList[position]){
 
-                binding.cityImage.load(this.cityEmblem){
-                    crossfade(true)
-                    Precision.INEXACT
-                    transformations(CircleCropTransformation())
-                }
+                Picasso.get().load(this.cityEmblem)
+                    .into(binding.cityImage)
+
                 binding.cityItemName.text = this.cityName
 
                 binding.cityFullItem.isClickable = true
                 binding.cityFullItem.setOnClickListener {
 
-                    currentCity = this.cityName
+                    currentCity = this
                     activity.replaceFragment(PlacesListFragment())
                 }
             }

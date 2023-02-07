@@ -5,9 +5,10 @@
       <map>
         <entry key="..\:/Android/Projects/Test2/app/src/main/res/drawable/button_ripple_effect.xml" value="0.114" />
         <entry key="..\:/Android/Projects/Test2/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/Android/Projects/Test2/app/src/main/res/layout/audio_player.xml" value="0.253125" />
         <entry key="..\:/Android/Projects/Test2/app/src/main/res/layout/city_item.xml" value="0.22826086956521738" />
         <entry key="..\:/Android/Projects/Test2/app/src/main/res/layout/fragment_cities_list.xml" value="0.22826086956521738" />
-        <entry key="..\:/Android/Projects/Test2/app/src/main/res/layout/fragment_current_place.xml" value="0.22826086956521738" />
+        <entry key="..\:/Android/Projects/Test2/app/src/main/res/layout/fragment_current_place.xml" value="0.144" />
         <entry key="..\:/Android/Projects/Test2/app/src/main/res/layout/fragment_locations_list.xml" value="0.22826086956521738" />
         <entry key="..\:/Android/Projects/Test2/app/src/main/res/layout/fragment_place.xml" value="0.22826086956521738" />
         <entry key="..\:/Android/Projects/Test2/app/src/main/res/layout/fragment_place_list.xml" value="0.22826086956521738" />

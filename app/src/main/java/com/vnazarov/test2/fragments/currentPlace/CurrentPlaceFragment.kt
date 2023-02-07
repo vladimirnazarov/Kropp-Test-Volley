@@ -1,14 +1,16 @@
 package com.vnazarov.test2.fragments.currentPlace
 
+import android.os.Build
 import android.os.Bundle
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import coil.load
 import com.vnazarov.test2.MainActivity
+import com.vnazarov.test2.data.currentCity
 import com.vnazarov.test2.data.currentPlace
-import com.vnazarov.test2.data.currentPlaceImage
 import com.vnazarov.test2.databinding.FragmentCurrentPlaceBinding
 import com.vnazarov.test2.helpers.disablePopBack
 import com.vnazarov.test2.helpers.enablePopBack
@@ -30,9 +32,18 @@ class CurrentPlaceFragment: Fragment() {
     override fun onResume() {
         super.onResume()
 
-        mBinding.currentPlaceTest.text = currentPlace
-        mBinding.currentPlaceImage.load(currentPlaceImage)
-        (activity as MainActivity).title = currentPlace
+        mBinding.currentPlaceTitle.text = currentPlace.name
+        mBinding.currentPlaceImage.load(currentPlace.photo)
+
+        var htmlTextDecoded = currentPlace.text
+        htmlTextDecoded = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            Html.fromHtml(htmlTextDecoded, Html.FROM_HTML_MODE_LEGACY).toString()
+        } else {
+            Html.fromHtml(htmlTextDecoded).toString()
+        }
+
+        mBinding.currentPlaceText.text = htmlTextDecoded
+        (activity as MainActivity).title = currentCity.cityName
         enablePopBack(activity as MainActivity, (activity as MainActivity).mToolbar)
     }
 

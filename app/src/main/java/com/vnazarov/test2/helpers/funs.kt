@@ -179,6 +179,7 @@ fun loadData(
                     jsonObject.getString("creation_date"),
                     jsonObject.getDouble("lat"),
                     jsonObject.getDouble("lng"),
+                    jsonObject.getString("logo"),
                     jsonObject.getString("photo"),
                     jsonObject.getInt("city_id"),
                     jsonObject.getBoolean("visible"),

@@ -2,35 +2,37 @@ package com.vnazarov.test2.objects
 
 data class Place(
 
-    val id: Int,
+    val id: Int = 0,
 
-    val pointId: Int,
+    val pointId: Int = 0,
 
-    val name: String,
+    val name: String = "",
 
-    val text: String,
+    val text: String = "",
 
-    val sound: String,
+    val sound: String = "",
 
-    val language: Int,
+    val language: Int = 0,
 
-    val lastEditTime: Long,
+    val lastEditTime: Long = 0,
 
-    val creationDate: String,
+    val creationDate: String = "",
 
-    val latitude: Double,
+    val latitude: Double = 0.0,
 
-    val longitude: Double,
+    val longitude: Double = 0.0,
 
-    val photo: String,
+    val logo: String = "",
 
-    val cityId: Int,
+    val photo: String = "",
 
-    val isVisible: Boolean,
+    val cityId: Int = 0,
 
-    val images: List<String>,
+    val isVisible: Boolean = false,
 
-    val tags: List<Int>,
+    val images: List<String> = arrayListOf(),
 
-    val isExcursion: Boolean
+    val tags: List<Int> = arrayListOf(),
+
+    val isExcursion: Boolean = false
 )
